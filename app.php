@@ -39,26 +39,23 @@ Ext.onReady(function(){
 
            me.start_menu = me.build_start_menu();
 
-           me.desktop_panel = Ext.create('Ext.Panel', {
+           me.desktop_panel = Ext.create('Ext.Window', {
                 renderTo     : Ext.getBody(),
-                width        : window.width,
-                height       : 968,
                 maximized : true,
+                header:false,
                 closable: false,
-                bodyPadding  : 5,
-                layout:'hbox',
-
-                tbar: [
-                    {
+                style:'border-radius:0;',
+                stretch:true,
+                /*layout:'border',
+                items:[{xtype:'image',src:'desk.jpg', region:'center'}],*/
+                tbar: [{
                         iconCls:'proline-icon',
                         handler:function(){ 
                             if(me.start_menu.isVisible()){ me.start_menu.hide(); }
                             else{ me.start_menu.showAt(0,40); } 
                         }
-                    },
-                    '-'
-                ]
-            });
+                },'-']
+            }).show();
 
             me.app_manager = new AppManager();
 
